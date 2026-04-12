@@ -1,10 +1,21 @@
-const express= require('express');
-const app=express();
-//Using inbuilt Middleware(express.json())
-app.use(express.json());
-const router= require('./routes/taskRoutes.js');
-app.use('/api',router);
+const express = require("express");
+const connectDB = require("./config/db");
 
-app.listen(3000, () => {
-    console.log("Server running 🚀");
+const app = express();
+
+// 🔥 Middleware (VERY IMPORTANT)
+app.use(express.json());
+
+// 🔥 Connect Database
+connectDB();
+
+// 🔥 Routes
+const taskRoutes = require("./routes/taskRoutes");
+app.use("/api/tasks", taskRoutes);
+
+// 🔥 Server
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT} 🚀`);
 });

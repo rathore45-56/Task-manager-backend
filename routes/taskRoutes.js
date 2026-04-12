@@ -1,10 +1,6 @@
 const express=require('express');
 const router= express.Router();
-
-router.get('/',(req,res)=>{
-    res.json({
-       name:"Utkarsh",
-       message:"Hello everyone"
-    })
-})
+const { createtask, getTasks} = require("../controllers/taskControllers");
+router.get('/',getTasks);
+router.post('/',createtask);
 module.exports=router;
