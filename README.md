@@ -7,14 +7,32 @@ It allows users to manage tasks through REST APIs.
 
 ## 📌 Features
 
-- Create a task  
-- Get all tasks  
+- Create a task (stored in MongoDB)
+- Get all tasks from database
 - Update a task (coming soon)  
 - Delete a task (coming soon)  
 - REST API architecture  
 
 ---
 
+## 🔄 Current Progress
+
+- ✅ Project setup completed
+- ✅ Folder structure implemented
+- ✅ Express server created
+- ✅ Basic routes implemented
+- ✅ MongoDB connected
+- ✅ Create & Get APIs working with database
+
+---
+
+## 🗄️ Database
+
+- MongoDB Atlas used for cloud database
+- Mongoose used for schema and data modeling
+
+---
+  
 ## 🛠 Tech Stack
 
 - Node.js  
