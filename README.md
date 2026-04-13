@@ -2,6 +2,7 @@
 
 This is a backend project built using Node.js, Express, and MongoDB.  
 It allows users to manage tasks through REST APIs.
+This project now supports full CRUD operations.
 
 ---
 
@@ -9,8 +10,9 @@ It allows users to manage tasks through REST APIs.
 
 - Create a task (stored in MongoDB)
 - Get all tasks from database
-- Update a task (coming soon)  
-- Delete a task (coming soon)  
+- Update a task
+- Delete a task
+- Mark task as completed 
 - REST API architecture  
 
 ---
@@ -20,9 +22,10 @@ It allows users to manage tasks through REST APIs.
 - ✅ Project setup completed
 - ✅ Folder structure implemented
 - ✅ Express server created
-- ✅ Basic routes implemented
 - ✅ MongoDB connected
-- ✅ Create & Get APIs working with database
+- ✅ Create & Get APIs working
+- ✅ Update & Delete APIs implemented
+- ✅ Task completion feature added
 
 ---
 
@@ -100,13 +103,25 @@ npx nodemon index.js
 ### ➤ Get all tasks
 GET /api/tasks
 
+---
 
 ### ➤ Create a task
 POST /api/tasks
-
 
 #### Request Body:
 ```json
 {
   "title": "Learn Backend"
 }
+
+
+➤ Update a task
+PUT /api/tasks/:id
+Request Body:
+{
+  "title": "Updated Task"
+}
+➤ Delete a task
+DELETE /api/tasks/:id
+➤ Mark task as completed
+PATCH /api/tasks/:id/complete
