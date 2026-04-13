@@ -114,14 +114,25 @@ POST /api/tasks
   "title": "Learn Backend"
 }
 
+```
+--- 
 
 ➤ Update a task
 PUT /api/tasks/:id
-Request Body:
+
+#### Request Body:
+```json
 {
   "title": "Updated Task"
 }
+
+```
+---
+
 ➤ Delete a task
 DELETE /api/tasks/:id
+
+---
+
 ➤ Mark task as completed
 PATCH /api/tasks/:id/complete
