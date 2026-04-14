@@ -29,6 +29,15 @@ This project now supports full CRUD operations.
 
 ---
 
+## ✅ Enhancements
+
+- Input validation added
+- Improved error handling
+- Standardized API responses
+
+---
+
+
 ## 🗄️ Database
 
 - MongoDB Atlas used for cloud database
