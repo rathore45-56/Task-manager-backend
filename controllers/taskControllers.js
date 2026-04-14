@@ -1,17 +1,19 @@
 const Task=require('../models/taskModels');
+const  mongoose = require("mongoose");
 
 const createtask= async(req,res)=>{
     try{
         const {title}=req.body;
+        if(!title||title.trim()=="")
+        {
+            res.status(400).json(
+                {
+                    message:"Title is Required",
+                }
+            )
+        }
    const newTask= new Task({title});
     await newTask.save();
-    if(!newTask)
-    {
-        res.status(404).json({
-            Success:false,
-            message:"No new task added"
-        })
-    }
      res.status(200).json({
         success:true,
         task:newTask
@@ -53,12 +55,25 @@ const updatedtask= async(req,res)=>{
     try{
     const {id}=req.params;
     const {title}=req.body;
+    if(!title||title.trim()=="")
+    {
+        res.status(400).json({
+            message:"Title is required"
+        })
+    }
+      // ✅ Check valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            res.status(400).json({
+                success: false,
+                message: "Invalid task ID"
+            });
+        }
     const updated=await Task.findByIdAndUpdate(id,{title},{new:true});
     if(!updated)
     {
         res.status(404).json({
             success:false,
-            message:"No update",
+            message:"Title Not Found",
             error:"No update happen"
         })
     }
@@ -79,12 +94,19 @@ const updatedtask= async(req,res)=>{
 const deletedtask= async(req,res)=>{
     try{
     const {id}=req.params;
+      // ✅ Check valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid task ID"
+            });
+        }
     const deleted=await Task.findByIdAndDelete(id);
     if(!deleted)
     {
         res.status(404).json({
             success:false,
-            message:"No deletion",
+            message:"No deletion as data is not available",
             error:"Nothing is deleted"
         })
     }
@@ -105,6 +127,13 @@ const deletedtask= async(req,res)=>{
 const markComplete = async (req, res) => {
     try {
         const {id}=req.params;
+          // ✅ Check valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid task ID"
+            });
+        }
         const completed = await Task.findByIdAndUpdate(
             id,
             { completed: true },
