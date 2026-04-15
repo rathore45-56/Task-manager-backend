@@ -12,7 +12,9 @@ connectDB();
 
 // 🔥 Routes
 const routes = require("./routes/taskRoutes");
+const route=require("./routes/Userroute");
 app.use("/api", routes);
+app.use("/api",route);
 
 // 🔥 Server
 const PORT=3000;
