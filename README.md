@@ -14,7 +14,7 @@ This project now supports full CRUD operations.
 - Delete a task
 - Mark task as completed 
 - REST API architecture  
-
+  
 ---
 
 ## 🔄 Current Progress
